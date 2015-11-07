@@ -9,16 +9,39 @@ $(function() {
 	$(".AddInterface").on("click",function(){
 		window.location.href="interFaceBaseInfo.html?userName="+$.getUrlParam("userName");
 	});
-	$("#ifProId").attr("disabled","disabled"); ;
+	$("#ifProId").attr("disabled","disabled"); 
+	
+	
+	$("#qwe,#asd,#zxc").css({"display":"none"});
+	$("#wer").css({"display":"table-row"})
 
+	$("#ifProtocol").on("change",function(){
+		if($(this).val()=="HTTP"){
+			$("#qwe,#asd,#zxc").css({"display":"none"});
+			$("#wer").css({"display":"table-row"})
+			$("#qwe,#asd,#zxc").find("input").attr("disabled","disabled");
+			$("#wer").find("select").removeAttr("disabled");
+		}else if($(this).val()=="FTP"){
+			
+		}else if($(this).val()=="DUBBO"){
+			$("#wer").css({"display":"none"})
+			$("#qwe,#asd,#zxc").css({"display":"table-row"});
+			$("#wer").find("select").attr("disabled","disabled");
+			$("#qwe,#asd,#zxc").find("input").removeAttr("disabled");
+		}
+	});
+	$("#saveInterFaceBtn").on("click",function(){
+		
+		console.log($('#interFaceForm').serializeJson());
+	})
 	
 	$('#ifSysId').change(function(){ 
 	var sysId=	$(this).children('option:selected').val();
 	var sendData={
 			"interFacePro":{
-				   "sysId":sysId
-				}
-			};
+				"sysId":sysId
+			}
+		};
 	//加载产品信息
 	  gigold.pay.interFace.ajaxHandler({
 			"url":"getProInfoBySysId.do",
@@ -52,19 +75,6 @@ $(function() {
 			}
 		});
 		
-//		//加载产品信息
-//		 gigold.pay.interFace.ajaxHandler({
-//	            "url":"getAllProInfo.do",
-//	            "onSuccess":function(data){
-//	            	if (data.rspCd == "00000") {
-//	                    $.each(data.proList, function(index, proData) {
-//	                        var optionStr = '<option value="'+proData.id+'">'
-//	                                + proData.proName + '</option>';
-//	                        $("#ifProId").append(optionStr);
-//	                    });
-//	                }
-//	            }
-//	        });
 		
        //接口基本信息保存按钮功能
 		$("#saveInterFaceBtn").click(function() {

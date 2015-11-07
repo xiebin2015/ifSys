@@ -20,6 +20,9 @@ th{
 	margin-left:8.5px;
 	display: none;
 }
+input{
+	width:auto !important;
+}
 .colorBlue{
 	color: #0084C7;
 }
@@ -83,15 +86,20 @@ th{
 	color:#0e90d2;
 }
 
-
+.searchBox{
+	position: absolute;
+	right:226px;
+	top:70px;
+}
+.searchBox .am-selected {
+	width:auto;
+}
 .search{
 	border:1px solid #aaa;
 	display:inline-block;
 	padding:5px 5px 5px 10px;
 	border-radius:5px;
-	position: absolute;
-	right:226px;
-	top:70px;
+	margin-left:5px;
 }
 .search input{
 	border:none;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gigold.pay.framework.base.DomainFactory;
+import com.gigold.pay.framework.bootstrap.SystemPropertyConfigure;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.web.BaseController;
 import com.gigold.pay.ifsys.bo.InterFaceField;
@@ -25,6 +26,7 @@ import com.gigold.pay.ifsys.service.InterFaceProService;
 import com.gigold.pay.ifsys.service.InterFaceService;
 import com.gigold.pay.ifsys.service.InterFaceSysService;
 import com.gigold.pay.ifsys.service.UserInfoService;
+import com.gigold.pay.ifsys.util.Constant;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -82,7 +84,8 @@ public class InterFaceController extends BaseController{
     
     @RequestMapping("/queryByCondition")
     public @ResponseBody InterFacePageResponseDto queryInterFaceByPage(@RequestBody InterFaceFuzzyQueryRequestDto qdto) {
-       PageHelper.startPage(qdto.getPageInfo().getPageNum(),qdto.getPageInfo().getPageSize());
+    	int pageSize=Integer.parseInt(SystemPropertyConfigure.getProperty(Constant.SYSTEMPARAM_PAGESIZE, String.valueOf(Constant.PAGE_SIZE)));
+		PageHelper.startPage(qdto.getPageInfo().getPageNum(), pageSize);
         List<InterFaceInfo> list = interFaceService.queryInterFaceByPage(qdto.getInterFaceInfo());
         debug("传入的参数：" + qdto.getPageInfo().getPageNum() + "====" + qdto.getPageInfo().getPageSize());
         InterFacePageResponseDto dto = new InterFacePageResponseDto();
@@ -105,7 +108,8 @@ public class InterFaceController extends BaseController{
     @RequestMapping("/getInterFaceByPage")
     public @ResponseBody InterFacePageResponseDto getAllInterFace(@RequestBody InterFacePageRequestDto qdto) {
         debug("调用getInterFaceByPage：");
-        PageHelper.startPage(qdto.getPageInfo().getPageNum(),qdto.getPageInfo().getPageSize());
+        int pageSize=Integer.parseInt(SystemPropertyConfigure.getProperty(Constant.SYSTEMPARAM_PAGESIZE, String.valueOf(Constant.PAGE_SIZE)));
+		PageHelper.startPage(qdto.getPageInfo().getPageNum(), pageSize);
         List<InterFaceInfo> list = interFaceService.getAllInterFaceByPage();
         debug("传入的参数：" + qdto.getPageInfo().getPageNum() + "====" + qdto.getPageInfo().getPageSize());
         InterFacePageResponseDto dto = new InterFacePageResponseDto();
@@ -130,7 +134,7 @@ public class InterFaceController extends BaseController{
     @RequestMapping("/addInterface")
     public @ResponseBody InterFaceResponseDto addInterface(@RequestBody InterFaceRequestDto qdto,HttpSession session) {
         InterFaceInfo interFaceInfo=qdto.getInterFaceInfo();
-        UserInfo user=(UserInfo)session.getAttribute("userInfo");
+        UserInfo user=(UserInfo)session.getAttribute(SystemPropertyConfigure.getLoginKey());
        if(user!=null){
            interFaceInfo.setIfCreateBy(user.getId());
        }

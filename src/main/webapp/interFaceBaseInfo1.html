@@ -43,16 +43,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="am-text-right">接口协议:</td>
-                            <td>
-                                <select id="ifProtocol" name="ifProtocol">
-                                    <option value="HTTP" selected>HTTP</option>
-                                    <option value="FTP">FTP</option>
-                                    <option value="DUBBO">DUBBO</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <td class="am-text-right">接口名字:</td>
                             <td>
                                 <input id="ifName" name="ifName" placeholder="输入接口名" />
@@ -66,7 +56,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="am-text-right">接口URL/类名:</td>
+                            <td class="am-text-right">接口URL:</td>
                             <td>
                                 <input id="ifUrl" name="ifUrl" placeholder="输入接口URL" />
                             </td>
@@ -87,30 +77,22 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr id="wer">
+                        <tr>
+                            <td class="am-text-right">接口协议:</td>
+                            <td>
+                                <select id="ifProtocol" name="ifProtocol">
+                                    <option value="HTTP" selected>HTTP</option>
+                                    <option value="FTP">FTP</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="am-text-right">接口请求方式:</td>
                             <td>
                                 <select id="ifType" name="ifType">
                                     <option value="POST" selected>POST</option>
                                     <option value="GET">GET</option>
                                 </select>
-                            </td>
-                        </tr>
-                        <tr id="asd">
-                            <td class="am-text-right">方法名:</td>
-                            <td>
-                                <input  name="method" id="method" placeholder="输入接口方法名" disabled />
-                            </td>
-                        </tr>
-                        <tr id="zxc">
-                            <td class="am-text-right">版本号:</td>
-                            <td>
-                                <input  name="methodVersion" id="methodVersion" placeholder="输入接口版本号" disabled />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
                                 <button id="saveInterFaceBtn" type="button" class="am-btn am-btn-success" style="width: 20%; float: right;">保存</button>
                             </td>
                         </tr>

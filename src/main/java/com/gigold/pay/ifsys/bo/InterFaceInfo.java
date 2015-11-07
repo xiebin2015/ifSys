@@ -32,7 +32,8 @@ public class InterFaceInfo extends Domain implements Serializable {
     private String ifType;
     private String ifProtocol;
     private String isValid;
-    
+    private String method;
+    private String methodVersion;
     private String sysName;
     private String proName;
     private String designName;
@@ -42,6 +43,34 @@ public class InterFaceInfo extends Domain implements Serializable {
     
 
     /**
+	 * @return the method
+	 */
+	public String getMethod() {
+		return method;
+	}
+
+	/**
+	 * @param method the method to set
+	 */
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	/**
+	 * @return the methodVersion
+	 */
+	public String getMethodVersion() {
+		return methodVersion;
+	}
+
+	/**
+	 * @param methodVersion the methodVersion to set
+	 */
+	public void setMethodVersion(String methodVersion) {
+		this.methodVersion = methodVersion;
+	}
+
+	/**
      * @return the proName
      */
     public String getProName() {
