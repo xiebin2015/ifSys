@@ -54,7 +54,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="am-text-right am-text-secondary">接口URL/类名:</td>
+							<td class="am-text-right am-text-secondary">接口URL:</td>
 							<td>
 								<input style="width:100%" id="ifUrl" name="ifUrl" placeholder="输入接口URL" />
 							</td>
@@ -79,37 +79,19 @@
 								<select id="ifProtocolId" name="ifProtocol" data-am-selected="{btnWidth: '20%'}">
 									<option value="HTTP" selected>HTTP</option>
 									<option value="FTP">FTP</option>
-									<option value="DUBBO">DUBBO</option>
 								</select>
 							</td>
 						</tr>
-						<tr id="zxc">
+						<tr>
 							<td class="am-text-right am-text-secondary">接口请求方式:</td>
 							<td>
 								<select id="ifTypeId" name="ifType" data-am-selected="{btnWidth: '20%'}">
 									<option value="POST" selected>POST</option>
 									<option value="GET">GET</option>
-								</select></td>
-						</tr>
-                        <tr id="wer">
-                            <td class="am-text-right am-text-secondary">方法名:</td>
-                            <td>
-                                <input  name="method" id="method" placeholder="输入接口方法名" disabled />
-                            </td>
-                        </tr>
-                        <tr id="asd">
-                            <td class="am-text-right am-text-secondary">版本号:</td>
-                            <td>
-                                <input  name="methodVersion" id="methodVersion" placeholder="输入接口版本号" disabled />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                            		<button class="am-btn am-btn-success" type="button" id="saveInterFaceBtn" style="width:20%;float: right;">保存</button>
+								</select>
+								<button class="am-btn am-btn-success" type="button" id="saveInterFaceBtn" style="width:20%;float: right;">保存</button>
 							</td>
-                        </tr>
-						
+						</tr>
 					</tbody>
 				</table>
 			</form>

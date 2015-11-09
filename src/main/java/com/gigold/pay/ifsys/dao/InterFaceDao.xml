@@ -168,7 +168,9 @@
         IF_SYS_ID=#{ifSysId},
         IF_TYPE=#{ifType},
         IF_PROTOCOL=#{ifProtocol},
-        IF_URL=#{ifUrl}
+        IF_URL=#{ifUrl},
+        IF_DUBBO_VERSION=#{methodVersion},
+        IF_METHOD=#{method}
         where ID=#{id}
         ]]>
 	</update>

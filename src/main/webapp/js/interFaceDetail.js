@@ -49,6 +49,7 @@ function perRequest(userId){
 			async:"false",
 			data:addParam(data),
 			success:function(result){
+				console.log(result);
 				var perData = perRander(result);
 				perData.rander();
 			},
@@ -72,9 +73,18 @@ function perRander(result){
 		$(".propUrl").html(this.interFaceInfo.ifUrl);
 		$(".propSystem").html(this.system.sysName);
 		$(".propProduct").html(this.pro.proName);
-		$(".propHttp").html(this.interFaceInfo.ifProtocol);
-		$(".propRequest").html(this.interFaceInfo.ifType);
 		$(".userName").html(this.userInfo.userName);
+		$(".propHttp").html(this.interFaceInfo.ifProtocol);
+		if(this.interFaceInfo.ifProtocol=="HTTP"){
+			$(".propRequest").html(this.interFaceInfo.ifType);
+			$(".method").parent().parent().css({"display":"none"});
+			$(".methodVersion").parent().parent().css({"display":"none"});
+		}else if(this.interFaceInfo.ifProtocol=="DUBBO"){
+			$(".propRequest").parent().parent().css({"display":"none"});
+			$(".method").html(this.interFaceInfo.method);
+			$(".methodVersion").html(this.interFaceInfo.methodVersion);
+		}
+		
 	}
 	return backData;
 }

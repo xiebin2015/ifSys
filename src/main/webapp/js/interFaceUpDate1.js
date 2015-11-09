@@ -145,23 +145,6 @@ $(function(){
         var recordForm = $(this).parent().parent();
         $(recordForm).remove();
     });
-    //修改协议
-    $(document).on("change", "#ifProtocolId", function() {
-		if($(this).val()=="HTTP"){
-			$("#asd,#wer").css({"display":"none"});
-			$("#zxc").css({"display":"table-row"})
-			$("#asd,#wer").find("input").attr("disabled","disabled");
-			$("#zxc").find("select").removeAttr("disabled");
-		}else if($(this).val()=="FTP"){
-			
-		}else if($(this).val()=="DUBBO"){
-			$("#zxc").hide();
-			$("#asd,#wer").show();
-			$("#zxc").find("select").attr("disabled","disabled");
-			$("#asd,#wer").find("input").removeAttr("disabled");
-		}
-	});
-	
 })
 
 
@@ -244,8 +227,6 @@ function propAddRandera(result){
 	return backData;
 }
 
-
-
 //渲染接口接口信息
 function GetCurProp(result){
 	var propAddData = getCurProp(result);
@@ -260,29 +241,6 @@ function getCurProp(result){
 		$("#ifName").val(this.interFaceInfo.ifName);
 		$("#ifDesc").val(this.interFaceInfo.ifDesc);
 		$("#ifUrl").val(this.interFaceInfo.ifUrl);
-		var ifProtocolId = this.interFaceInfo.ifProtocol;
-		if(ifProtocolId=="HTTP"){
-			//获取当前接口请求方式
-			var ifTypeName = this.interFaceInfo.ifType;
-			var ifTypes = $("#ifTypeId option");
-				for(var i=0;i<ifTypes.length;i++){
-					if(ifTypeName==(ifTypes[i].label)){
-						$(ifTypes[i]).attr("selected","selected");
-						
-					}
-				}
-				$("#wer").hide();
-				$("#method").attr("disabled");
-				$("#asd").hide();;
-				$("#methodVersion").attr("disabled");
-		}else if(ifProtocolId=="DUBBO"){
-			$("#method").val(this.interFaceInfo.method);
-			$("#methodVersion").val(this.interFaceInfo.methodVersion);
-			$("#zxc").hide();
-			$("#ifTypeId").attr("disabled");
-		}
-		
-		
 		//获取当前接口所属系统
 		var ifSysName = this.system.sysName;
 		var optionsSys = $("#ifSysId option");
@@ -307,15 +265,14 @@ function getCurProp(result){
 				$(ifProtocols[i]).attr("selected","selected");
 			}
 		}
-		
-		
-		//获取当前接口协议
-		var ifTypes = $("#ifProtocolId option");
-			for(var i=0;i<ifTypes.length;i++){
-				if(ifProtocolId==(ifTypes[i].label)){
-					$(ifTypes[i]).attr("selected","selected");
-				}
+		//获取当前接口请求方式
+		var ifTypeName = this.interFaceInfo.ifType;
+		var ifTypes = $("#ifTypeId option");
+		for(var i=0;i<ifTypes.length;i++){
+			if(ifTypeName==(ifTypes[i].label)){
+				$(ifTypes[i]).attr("selected","selected");
 			}
+		}
 		
 		var field = this.fieldList;
 		console.log(field);
